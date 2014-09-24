@@ -1,0 +1,194 @@
+@import "global.scss";
+
+body {
+  margin-top: 2em;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: (800/14) + em;
+  position: relative;
+}
+
+header {
+  margin: 0 0 3em 0;
+  width: (800/14) + em;
+  height: auto;
+
+  h1 {
+    color: $main-theme-color;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 2.75em;
+
+    @media screen and (min-width: -mq-mw(400)) {
+
+      &:before {
+        display: inline-block;
+        margin-right: .25em;
+        width: 48px;
+        height: 48px;
+        background: transparent url(../images/icon48.png) 0 0 no-repeat;
+        background-repeat: none;
+        content: "";
+        vertical-align: middle;
+      }
+
+    }
+
+    span {
+      display: block;
+      margin-left: 3em;
+      font-size: .5em;
+    }
+  }
+}
+
+form {
+  width: (550/14) + em;
+  float: left;
+  position: relative;
+  margin-bottom: 2em;
+  border: 1px solid #CCC;
+  padding: 1em;
+}
+
+.sidebar {
+  float: left;
+  width: (250/14) + em;
+}
+
+h2 {
+  margin-bottom: 1em;
+  font-size: 2em;
+}
+
+.editable {
+  width: 90%;
+  height: 3em;
+  float: left;
+  margin-bottom: 1em;
+  line-height: 1.2;
+}
+
+ul {
+  width: 100%;
+  top: 16em;
+}
+
+li {
+  padding: 0.5em;
+  font-size: 1.25em;
+  border: 1px solid #CCC;
+  border-top: none;
+  border-right: none;
+  cursor: pointer;
+
+  &:first-of-type {
+    border-top: 1px solid #CCC;
+  }
+
+  &[data-status=active] {
+    background-color: #CCC;
+  }
+
+}
+
+.add {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75em;
+  padding: 0.25em;
+
+  &:hover,
+  &:focus {
+    background-color: #dfdfdf;
+  }
+}
+
+.remove {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: transparent url('../images/sprite-remove.png') no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-position: 0 -20px;
+  }
+}
+
+input[type=text] {
+  width: 60%;
+  height: 2.5em;
+  padding: 0.5em;
+}
+
+label,
+.label {
+  float: left;
+  width: 40%;
+  padding: 0.75em;
+  margin-bottom: .25em;
+  cursor: help;
+}
+
+button {
+  display: block;
+  @include -button;
+  margin: 0;
+  width: (250/14) + em;
+}
+
+input[type=button] {
+  margin: 0;
+  @include -button;
+  color: $main-theme-color;
+  background-color: #FFF;
+
+  &:hover,
+  &:focus {
+    border: none;
+    color: darken($main-theme-color, 10%);
+    background-color: darken(#FFF, 5%);
+  }
+
+  &:focus {
+    outline-width: 1;
+    outline-color: #CCCCCC;
+  }
+}
+
+.success,
+.failure {
+  text-align: center;
+  font-weight: bold;
+  padding: 1em;
+}
+
+  .success {
+    color: $feedback-good;
+  }
+
+  .failure {
+      color: $feedback-bad;
+  }
+
+.required:after {
+  content: "*";
+  display: inline-block;
+  margin-left: 0.125em;
+  color: $feedback-bad;
+}
+
+p {
+  text-align: right;
+}
+
+.offscreen {
+  @extend %offscreen;
+}

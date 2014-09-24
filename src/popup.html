@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <link rel='stylesheet' href='css/popup.css'>
+</head>
+<body>
+  <form>
+    <label for='search'>Search</label>
+    <input aria-labelledby='search' role='search' id='search-field' type='text' name='search' placeholder='Press enter to search' autofocus/>
+  </form>
+  <fieldset>
+    <input type='checkbox' role='checkbox' aria-labelledby='tab-option' name='tab-option' id='tab-option' />
+    <label for='tab-option'>Create new tabs</label>
+  </fieldset>
+  <div class='list-wrapper'>
+    <label for="link-list">Links and Tools</label>
+    <ul name='link-list' id='links'>
+      <li><a data-url='/welcome.html' tabindex=0>Welcome page</a></li>
+      <li><a data-url='/crx/de/' tabindex=0>CRXDE Lite</a></li>
+      <li><a data-url='/etc/importers/bulkeditor.html' tabindex=0>Bulk Editor</a></li>
+      <li><a data-url='/etc/replication/treeactivation.html' tabindex=0>Activate Tree</a></li>
+    </ul>
+</div>
+</body>
+<script src='js/libs/IndexedJS.min.js'></script>
+<script src='js/popup.js'></script>
+</html>

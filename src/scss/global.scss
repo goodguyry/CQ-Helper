@@ -1,0 +1,207 @@
+/* ------------------
+ * Variables
+ * ------------------ */
+
+$main-theme-color: #09C;
+$light-theme-color: #CCC;
+$lighter-theme-color: lighten($light-theme-color, 10%);
+$feedback-good: #4fac1c;
+$feedback-bad: #F00;
+$body-font-color: #666;
+
+/* ------------------
+ * Functions & Mixins
+ * ------------------ */
+
+// Creates an em-based, min-width media query from the given viewport pixel width ($vpw)
+@function -mq-mw($vpw) {
+  @return ($vpw/16) + em;
+}
+
+// Prefixer
+@mixin -prefix($prop, $value) {
+  $vendors: -webkit-, '';
+
+  @each $vendor in $vendors {
+    #{$vendor}#{$prop}: #{$value};
+  }
+}
+
+// Easy transitions
+@mixin -transition($property, $duration) {
+  -webkit-transition: $property $duration ease-in-out;
+          transition: $property $duration ease-in-out;
+}
+
+@mixin -button {
+  padding: .5em;
+  width: 100%;
+  height: 3em;
+  outline-width: 0;
+  border: none;
+  background-color: $main-theme-color;
+  color: #FFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  font: {
+    weight: lighter;
+    size: 1em;
+  }
+
+  &:hover,
+  &:focus {
+    border: 1px solid darken($main-theme-color, 10%);
+  }
+
+  &:focus {
+    outline-width: 1;
+    outline-color: $main-theme-color;
+  }
+
+}
+
+@mixin -offscreen {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+// -------------------------------------------
+//    Placeholders
+// -------------------------------------------
+
+// Clearfix to contain floats
+%clearfix {
+  *zoom: 1;
+
+  &:before {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+}
+
+// Hides content
+// @extend %offscreen
+%offscreen {
+  position: absolute;
+  top: auto;
+  left: -10000px;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  opacity: 0;
+}
+
+/* ------------------
+ * Reset
+ * ------------------ */
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,hr,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;border:0;background:transparent;vertical-align:baseline;}body{line-height:1;}h1,h2,h3,h4,h5,h6{clear:both;font-weight:normal;}ol,ul{list-style:none;}blockquote{quotes:none;}blockquote:before,blockquote:after{content:'';content:none;}del{text-decoration:line-through;}table{border-spacing:0;border-collapse:collapse;}a img{border:0;}article,aside,details,fig caption,figure,footer,header,group,nav,section{display:block;}*,*:after,*:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+
+/* ------------------
+ * Base
+ * ------------------ */
+
+body {
+  margin: 0;
+  background-color: #FFF;
+  color: $body-font-color;
+  -webkit-font-smoothing: antialiased;
+  font: {
+    size: 14px;
+    family: sans-serif;
+    weight: lighter;
+  }
+}
+
+/* ------------------
+ * Form
+ * ------------------ */
+
+label,
+.label {
+  letter-spacing: 1px;
+}
+
+input {
+  margin-bottom: 1.5em;
+  font-weight: lighter;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+
+  &[type=text] {
+    @include -transition(outline-color, 300ms);
+    height: 3em;
+    outline-color: white;
+    border: 1px solid #DFDFDF;
+    color: $body-font-color;
+    -webkit-font-smoothing: antialiased;
+
+    &:focus {
+      @include -transition(outline-color, 300ms);
+      outline-color: $main-theme-color;
+    }
+
+    &:disabled {
+      background-color: lighten($light-theme-color,18%);
+    }
+
+    &.highlight {
+      @include -transition(border, 300ms);
+      border: 1px solid $feedback-bad;
+    }
+
+    &.highlight:focus {
+      @include -transition(outline-color, 300ms);
+      outline-color: $feedback-bad;
+    }
+
+  }
+
+  &[type="checkbox"] {
+    float: left;
+    margin: 0;
+    width: 14px;
+    height: 14px;
+    outline-width: 0;
+    border: 1px solid $light-theme-color;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px 1px #fff;
+    cursor: pointer;
+    -webkit-appearance: none;
+
+    &:focus {
+      box-shadow: 0px 0px 3pt 2pt $main-theme-color;
+    }
+
+  }
+
+  &:checked {
+    outline-width: 0;
+    border: 1px solid $feedback-good;
+    background-color: $feedback-good;
+    box-shadow: inset 0 0 2px 1px #fff;
+  }
+
+}
+
+::-webkit-input-placeholder {
+  color: #CCC;
+}
+
+a {
+  color: $main-theme-color;
+  text-decoration: none;
+}

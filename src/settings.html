@@ -1,0 +1,61 @@
+<html>
+<head>
+  <title>CQ Helper Settings</title>
+  <link rel='stylesheet' href='css/settings.css'>
+</head>
+<body>
+
+<div class='wrapper' role='main'>
+
+  <header role='banner'>
+    <h1>CQ Helper</h1>
+  </header>
+
+  <div class='sidebar'>
+
+    <ul id='environments'>
+      <li data-status='active' data-key='' tabindex=0></li>
+    </ul>
+
+    <input id='add' type='button' value='Add' role='button' for='environments' title='Add another environment'>
+    <button id='save' form='settings-form' aria-controls='status' role='button'>Save &amp; Reload</button>
+    <p id='status'></p>
+
+  </div>
+
+  <form method='post' id='settings-form' role='form' novalidate='' action='javascript:void(0);'>
+
+    <span class='editable' contenteditable='true'><h2></h2></span>
+
+    <label for='live-url' title="Your site's domain, including 'www' if necessary" class='required'>Live Domain</label>
+    <input aria-labelledby='live-url' type='text' name='live-url' placeholder='geometrixx.net' value='' required/>
+
+    <label for='cms-url' title="The domain for the CMS, including 'www' if necessary" class='required'>CMS Domain</label>
+    <input aria-labelledby='cms-url' type='text' name='cms-url' placeholder='cq.geometrixx.net' value='' required/>
+
+    <label for='content-path' title="The path to the root of your site in siteadmin" class='required'>CMS Content Path</label>
+    <input aria-labelledby='content-path' type='text' name='content-path' placeholder='/content/geometrixx/en' value='' required/>
+
+    <label for='dam-path' title="The path to your Digital Asset Manager's root" class='required'>DAM Content Path</label>
+    <input aria-labelledby='dam-path' type='text' name='dam-path' placeholder='/content/dam/geometrixx' value='' required/>
+
+    <label for='search-path' title="Enter the path up to the beginning of the search query; when left blank, defaults to a Google site-specific search">Site Search Path</label>
+    <input aria-labelledby='search-path' type='text' name='search-path' placeholder='/search.php?q=' value=''/>
+
+    <label for='external-url' title="Enter an external website from which you would like to open links">External Domain</label>
+    <input aria-labelledby='external-url' type='text' name='external-url' placeholder='jira.geometrixx.net' value=''/>
+
+    <span class='remove' tabindex=0></span>
+
+  </form>
+
+  <p>Created by <a href='http://ryandomingue.com'>Ryan Domingue</a></p>
+
+</div>
+
+</body>
+
+<script src='js/libs/IndexedJS.min.js'></script>
+<script src='js/settings.js'></script>
+
+</html>

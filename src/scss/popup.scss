@@ -1,0 +1,123 @@
+@import "global.scss";
+
+body {
+  width: 220px;
+  height: auto;
+}
+
+form {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+form {
+  padding: 1em 1em 0 1em;
+}
+
+fieldset {
+  padding: 0 1em 1em 1em;
+}
+
+label[for="search"] {
+  display: none;
+}
+
+label[for="tab-option"] {
+  padding-left: 0.5em;
+  cursor: pointer;
+}
+
+label[for="sites-list"],
+label[for="link-list"] {
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  padding: 0.5em 0 0.5em 1em;
+  border-top: 1px solid $lighter-theme-color;
+}
+
+input[type=text] {
+  padding: 0.25em 0.5em;
+  width: 100%;
+}
+
+ul {
+  clear: both;
+  padding: 0.25em 0;
+  width: 100%;
+  border-top: 1px solid $lighter-theme-color;
+}
+
+.hide-border {
+  border-top: none;
+}
+
+li {
+  background-color: #FFF;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $lighter-theme-color;
+  }
+
+  &:focus {
+    outline-color: $main-theme-color;
+  }
+
+}
+
+[name="sites-list"] li {
+  padding: 0.5em 1em;
+  font-weight: normal;
+  color: $main-theme-color;
+
+  &[data-toggle="active"] {
+    color: $body-font-color;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      background-color: #FFF;
+    }
+
+    &:before {
+      display: inline-block;
+      content: "\203A";
+      margin-right: 0.25em;
+      color: $body-font-color;
+    }
+
+  }
+
+}
+
+a {
+  display: block;
+  font-weight: normal;
+  width: 100%;
+  padding: 0.5em 1em;
+
+  &:focus {
+    outline-color: $main-theme-color;
+  }
+
+}
+
+button {
+  display: none;
+  @include -button;
+}
+
+#instance-p {
+  display: none;
+  padding: 1em 0;
+  width: 100%;
+  height: 3em;
+  background-color: $lighter-theme-color;
+  color: $body-font-color;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1em;
+  cursor: text;
+  -webkit-font-smoothing: antialiased;
+}

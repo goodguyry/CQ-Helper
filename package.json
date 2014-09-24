@@ -1,0 +1,32 @@
+{
+  "name": "cq-helper",
+  "longName": "CQ Helper",
+  "description": "A Chrome/Opera extension for productive use of the Adobe CQ CMS.",
+  "author": {
+    "name": "Ryan Domingue",
+    "email": "ryan@ryandomingue.com",
+    "url": "http://ryandomingue.com/"
+  },
+  "homepage": "http://github.com/goodguyry/CQ-Helper",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/goodguyry/CQ-Helper.git"
+  },
+  "version": "0.9.5",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.6.3",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-contrib-sass": "~0.6.0",
+    "load-grunt-tasks": "~0.2.1",
+    "time-grunt": "~0.2.5",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-banner": "~0.2.0",
+    "grunt-contrib-compress": "~0.8.0"
+  }
+}
