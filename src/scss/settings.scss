@@ -51,6 +51,11 @@ form {
   margin-bottom: 2em;
   border: 1px solid #CCC;
   padding: 1em;
+
+  &.import {
+    clear: both;
+    float: right;
+  }
 }
 
 .sidebar {
@@ -61,6 +66,12 @@ form {
 h2 {
   margin-bottom: 1em;
   font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  margin-left: (250/21) + em;
 }
 
 .editable {
@@ -122,10 +133,15 @@ li {
   }
 }
 
-input[type=text] {
+input[type=text],
+input[type=file] {
   width: 60%;
   height: 2.5em;
   padding: 0.5em;
+}
+
+input[type=file] {
+  margin-bottom: 0;
 }
 
 label,
@@ -186,6 +202,7 @@ input[type=button] {
 }
 
 p {
+  clear: both;
   text-align: right;
 }
 

@@ -73,7 +73,7 @@ cqHelper.settings.save = function(e, action, validated) {
     var addOptions = {
       data: environment,
       onsuccess: function(e) {
-        console.log(this.data.title, 'added/updated');
+        console.log(addOptions.data.title, 'added/updated');
       },
       oncomplete: action,
       onerror: function(e) {
@@ -537,6 +537,60 @@ cqHelper.settings.error = function(e) {
 
 
 /**
+ * Import settings file
+ */
+cqHelper.settings.importSettings = function() {
+  // the file list
+  var fileList = document.getElementById('environments-import').files;
+
+  var fileReader = new FileReader();
+  var environments;
+
+  // Bind function to the FileReader onloadend event to know when file is fully loaded
+  fileReader.onloadend = (function(file) {
+    return function(e) {
+
+      try {
+        // file's content in e.target.result
+        environments = JSON.parse(e.target.result);
+      } catch(execption) {
+        alert("There was a problem with the selected file.\n\nPlease ensure the selected file contains valid JSON.\n");
+        return false;
+      }
+
+      var importOpts = {
+        oncomplete: function(e) {
+          cqHelper.settings.feedback('success', 'Settings import complete');
+          window.setTimeout(function(){
+              location.reload();
+            }, 1200);
+        },
+        onerror: function(e) {
+          alert('Error adding environment', importOpts.data.title);
+        }
+      };
+
+      // iterate through environments
+      for (var obj in environments) {
+        // set the timeStamp
+        environments[obj].timeStamp = new Date().getTime();
+        // use the object property as the title
+        environments[obj].title = obj;
+        // add the environment to the import options' data object
+        importOpts.data = environments[obj];
+        console.log(importOpts.data);
+        // Add the environment
+        cqHelperDB.add(importOpts);
+      }
+    };
+  })(fileList[0]);  // fileList[0] assumes only one file has been selected
+
+  // read the file
+  fileReader.readAsText(fileList[0]);
+};
+
+
+/**
 * Add event listeners
 *
 * @method eventListeners
@@ -675,5 +729,7 @@ cqHelper.settings.eventListeners = function() {
        cqHelper.settings.remove();
      }
   });
+
+  document.getElementById('environments-import').addEventListener('change', cqHelper.settings.importSettings, false);
 
 };
