@@ -45,7 +45,7 @@ $body-font-color: #666;
   -webkit-appearance: none;
   -webkit-font-smoothing: antialiased;
   font: {
-    weight: lighter;
+    weight: normal;
     size: 1em;
   }
 
@@ -122,7 +122,7 @@ body {
   font: {
     size: 14px;
     family: sans-serif;
-    weight: lighter;
+    weight: normal;
   }
 }
 
@@ -137,7 +137,7 @@ label,
 
 input {
   margin-bottom: 1.5em;
-  font-weight: lighter;
+  font-weight: normal;
   font-size: 1em;
   -webkit-font-smoothing: antialiased;
 
