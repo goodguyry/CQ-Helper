@@ -27,14 +27,15 @@ var cqHelperDB = new IndexedJS({
  */
 cqHelper.common.copyToLocalStorage = function(environment) {
   for (var field in environment) {
-   localStorage.setItem(field, environment[field]);
+    if (field === 'search_path' && environment[field] === '') {
+      var live = environment['live_url'];
+      localStorage.setItem('search_path', 'http://www.google.com/search?&q=site:' + live + '+');
+    } else {
+      localStorage.setItem(field, environment[field]);
+    }
   }
   localStorage.setItem('site_admin', '/siteadmin#');
   localStorage.setItem('dam_admin', '/damadmin#');
-  if (!localStorage.getItem('search_path')) {
-    var live = localStorage.getItem('live_url');
-    localStorage.setItem('search_path', 'http://www.google.com/search?&q=site:' + live + '+');
-  }
 };
 
 
