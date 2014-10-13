@@ -6,11 +6,13 @@ Add all your organization's CMS environments and easily switch between them; rig
 
 - [Features](#features)
 - [Installation](#installation)
+- [Import Environment Settings](#import-environment-settings)
 
 ## Features
 
 - Supports multiple CMS environments
     - Add as many environments as you need
+    - Import settings from a JSON file for easy team deployment
     - Easily switch environments via the extension's browser pop-up
 - Pages & Links
     - Switch between environments
@@ -54,6 +56,36 @@ grunt deploy
 ```
 
 Now you're ready to [manually install](http://developer.chrome.com/extensions/packaging.html) CQ Helper. Be sure to choose the ```/build``` directory when asked to specify the _"Extension root directory"_.
+
+## Import Environment Settings
+
+If you'd like to deploy for team use, I would recommend creating a JSON file &ndash; to hold values for the settings page's form fields &ndash; to be imported by team members. This is especially helpful if your organization has more than one instance of CQ.
+
+Of course, importing your settings is helpful even if you only have one instance of CQ.
+
+```javascript
+// from environments.json
+{
+  "Production" : {
+    "live_url" : "www.production.com",
+    "cms_url" : "cq.production.com",
+    "content_path" : "/content/production/en",
+    "dam_path" : "/content/dam/production",
+    "search_path" : "http://www.production.com/search.html?q=",
+    "external_url" : "jira.production.com"
+  },
+  "QA Server" : {
+    "live_url" : "www.example.com",
+    "cms_url" : "cq.example.com",
+    "content_path" : "/content/example/en",
+    "dam_path" : "/content/dam/example",
+    "search_path" : "http://www.example.com/search.html?q=",
+    "external_url" : "jira.example.com"
+  }
+}
+```
+
+Each site should be comma-separated and can be named anything you'd like (e.g, "Production"). However, environment property names must be respected and the file must be [valid JSON](http://jsonlint.com).
 
 ---
 
