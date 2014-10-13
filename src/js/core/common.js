@@ -20,10 +20,6 @@ var cqHelperDB = new IndexedJS({
 });
 
 
-// Open the database
-cqHelperDB.open();
-
-
 /**
  * Copy the active environment to localStorage
  *

@@ -14,10 +14,10 @@ var init = {
     // this = result.value
     if (init.counter === 0) {
       // For the first environment, fill the form with saved values
-      cqHelper.settings.fill(this, true);
+      cqHelper.settings.fill(this.value, true);
     } else if (init.counter > 0) {
       // For each environment after the first, add a selector
-      cqHelper.settings.selector('inactive', this.timeStamp, this.title);
+      cqHelper.settings.selector('inactive', this.value.timeStamp, this.value.title);
     }
     init.counter++;
   },
