@@ -48,9 +48,9 @@ cqHelper.common.setActiveKeyAndCopyToLocalStorage = function() {
     },
     data: [],
     onsuccess: function(e) {
-      // Create arrays of the timeStamp and title values
+      // Create array of the object values
       // These will be iterated over to create the list of environments
-      importOpts.data.push(this);
+      importOpts.data.push(this.value);
     },
     oncomplete: function(e) {
       // Copy the first environment into localStorage

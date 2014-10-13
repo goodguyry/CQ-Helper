@@ -12,8 +12,8 @@ var init = {
   onsuccess: function(e) {
     // Create arrays of the timeStamp and title values
     // These will be iterated over to create the list of environments
-    init.keys.push(this.timeStamp);
-    init.titles.push(this.title);
+    init.keys.push(this.value.timeStamp);
+    init.titles.push(this.value.title);
   },
   oncomplete: function() {
     var activeKey = localStorage.getItem('active_key');
