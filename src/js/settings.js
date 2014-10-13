@@ -40,7 +40,7 @@ var init = {
 */
 function FormElements() {
   this.form = document.getElementsByTagName('form')[0];
-  this.formHeading = document.getElementsByTagName('h2')[0];
+  this.formHeading = document.getElementsByTagName('span')[0];
   this.inputs = this.form.getElementsByTagName('input');
   this.selectors = document.getElementsByTagName('li');
   this.statusMessage = document.getElementById('status');
@@ -666,8 +666,10 @@ cqHelper.settings.eventListeners = function() {
     },800);
   });
 
+  var title = document.querySelector('.editable');
+
   // Update the selector title when the environment title changes
-  document.querySelector('.editable').addEventListener('blur', function() {
+  title.addEventListener('blur', function() {
     // Get new title
     // 'this' is the contenteditable span, which wraps the h2
     var titleElement = this.firstChild;
@@ -691,7 +693,7 @@ cqHelper.settings.eventListeners = function() {
   });
 
   // Form title: Set cursor position to end of title
-  document.querySelector('.editable').addEventListener('focus', function() {
+  title.addEventListener('focus', function() {
     var range = document.createRange();
     var sel = window.getSelection();
     range.setStart(this.childNodes[0], 1);
