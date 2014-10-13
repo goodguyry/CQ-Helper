@@ -3,7 +3,7 @@
   "short_name": "CQ Helper",
   "version": "0.9.7",
   "manifest_version": 2,
-  "description": "For use with the Adobe® CQ CMS",
+  "description": "For use with Adobe® CQ/AEM CMS. Multiple environments, site search, external links, and settings import for team deployment.",
   "homepage_url": "http://github.com/goodguyry/CQ-Helper",
   "options_page": "settings.html",
 
