@@ -73,7 +73,7 @@ Of course, importing your settings is helpful even if you only have one instance
     "cms_url" : "cq.production.com",
     "content_path" : "/content/production/en",
     "dam_path" : "/content/dam/production",
-    "search_path" : "http://www.production.com/search.html?q=",
+    "search_path" : "/search.html?q=",
     "external_url" : "jira.production.com"
   },
   "QA Server" : {
@@ -81,7 +81,7 @@ Of course, importing your settings is helpful even if you only have one instance
     "cms_url" : "cq.example.com",
     "content_path" : "/content/example/en",
     "dam_path" : "/content/dam/example",
-    "search_path" : "http://www.example.com/search.html?q=",
+    "search_path" : "/search.html?q=",
     "external_url" : "jira.example.com"
   }
 }
