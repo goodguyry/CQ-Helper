@@ -560,36 +560,39 @@ cqHelper.settings.importSettings = function() {
         return false;
       }
 
-      // Setup the import options object
-      var importOpts = {
-        oncomplete: function(e) {
-          cqHelper.settings.feedback('success', 'Settings import complete');
-        },
-        onerror: function(e) {
-          alert('Error adding environment', importOpts.data.title);
+      cqHelper.settings.deleteAll(function(e) {
+        // Setup the import options object
+        var importOpts = {
+          oncomplete: function(e) {
+            cqHelper.settings.feedback('success', 'Settings import complete');
+          },
+          onerror: function(e) {
+            alert('Error adding environment', importOpts.data.title);
+          }
+        };
+
+        var timeStamp = new Date().getTime();
+        var counter = 0;
+
+        // Iterate through environments
+        for (var obj in environments) {
+          // Randomize the timeStamp
+          // Otherwise, the `unique` requirement prevents objects from being saved
+          // But still incorporate the timeStamp so they're in the expected order (based on the JSON file)
+          environments[obj].timeStamp = timeStamp + counter;
+          // Use the object property as the title
+          environments[obj].title = obj;
+          // Add the environment to the import options' data object
+          importOpts.data = environments[obj];
+          console.log(importOpts.data);
+          // Add the environment
+          cqHelperDB.add(importOpts);
+          counter++;
         }
-      };
+      });
 
-      var timeStamp = new Date().getTime();
-      var counter = 0;
-
-      // Iterate through environments
-      for (var obj in environments) {
-        // Randomize the timeStamp
-        // Otherwise, the `unique` requirement prevents objects from being saved
-        // But still incorporate the timeStamp so they're in the expected order (based on the JSON file)
-        environments[obj].timeStamp = timeStamp + counter;
-        // Use the object property as the title
-        environments[obj].title = obj;
-        // Add the environment to the import options' data object
-        importOpts.data = environments[obj];
-        console.log(importOpts.data);
-        // Add the environment
-        cqHelperDB.add(importOpts);
-        counter++;
-      }
     };
-  })(fileList[0]);  // fileList[0] assumes only one file has been selected
+  })(fileList[0]);  // fileList[0] because there can be only one file selected
 
   // Read the file
   fileReader.readAsText(fileList[0]);
@@ -598,6 +601,34 @@ cqHelper.settings.importSettings = function() {
     location.reload();
   }, 1000);
 
+};
+
+
+/**
+ * Delete all environments in the ObjectStore
+ * Executed before settings import
+ *
+ * @method deleteAll
+ */
+cqHelper.settings.deleteAll = function(callback) {
+  var deleteOpts = {
+    mode: "readwrite",
+    cursor: {
+      bound: false
+    },
+    onsuccess: function(e) {
+      // Delete the current object
+      var request = this.delete();
+    },
+    onerror: function(e) {
+      console.log('Error deleting object');
+    },
+    // When we're finished, import the settings file
+    oncomplete: callback
+  };
+
+  // Delete all objects in the ObjectStore
+  cqHelperDB.query(deleteOpts);
 };
 
 

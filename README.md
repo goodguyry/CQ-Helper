@@ -63,6 +63,8 @@ If you'd like to deploy for team use, I would recommend creating a JSON file &nd
 
 Of course, importing your settings is helpful even if you only have one instance of CQ.
 
+**Note:** The imported settings will replace all current settings.
+
 ```javascript
 // from environments.json
 {
@@ -85,7 +87,7 @@ Of course, importing your settings is helpful even if you only have one instance
 }
 ```
 
-Each site should be comma-separated and can be named anything you'd like (e.g, "Production"). However, environment property names must be respected and the file must be [valid JSON](http://jsonlint.com).
+Each site can be named anything you'd like (e.g, "Production"), however, environment property names must be respected and the file must be [valid JSON](http://jsonlint.com).
 
 ---
 

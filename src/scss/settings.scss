@@ -206,6 +206,13 @@ p {
   text-align: right;
 }
 
+.info {
+  text-align: left;
+  font-style: italic;
+  margin-left: (250/14) + em;
+  margin-bottom: 1em;
+}
+
 .offscreen {
   @extend %offscreen;
 }
