@@ -87,7 +87,7 @@ Of course, importing your settings is helpful even if you only have one instance
 }
 ```
 
-Each site can be named anything you'd like (e.g, "Production"), however, environment property names must be respected and the file must be [valid JSON](http://jsonlint.com).
+Each site can be named anything you'd like (e.g, "Production"), however, environment property names must be respected, all required fields' values must be accounted for and the file must be [valid JSON](http://jsonlint.com).
 
 ---
 
