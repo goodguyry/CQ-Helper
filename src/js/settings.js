@@ -692,6 +692,16 @@ cqHelper.settings.eventListeners = function() {
     }
   });
 
+  // Listen for return key
+  // Remove focus when/if return is pressed
+  title.addEventListener('keydown', function(e) {
+    if (e && e.keyCode == 13) {
+      // Prevent new lines
+      e.preventDefault();
+      this.blur();
+    }
+  }, false);
+
   // Form title: Set cursor position to end of title
   title.addEventListener('focus', function() {
     var range = document.createRange();
