@@ -611,6 +611,7 @@ cqHelper.settings.importSettings = function() {
  * @method deleteAll
  */
 cqHelper.settings.deleteAll = function(callback) {
+  localStorage.clear();
   var deleteOpts = {
     mode: "readwrite",
     cursor: {
