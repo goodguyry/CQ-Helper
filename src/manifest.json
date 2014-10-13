@@ -1,7 +1,7 @@
 {
   "name": "CQ Helper",
   "short_name": "CQ Helper",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "manifest_version": 2,
   "description": "For use with the Adobe® CQ CMS",
   "homepage_url": "http://github.com/goodguyry/CQ-Helper",
