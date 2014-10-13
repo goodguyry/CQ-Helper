@@ -66,6 +66,20 @@ form {
 h2 {
   margin-bottom: 1em;
   font-size: 2em;
+
+  &:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    margin-left: 0.5em;
+    display: inline-block;
+    background: transparent url('../images/edit.png') no-repeat;
+    cursor: text;
+  }
+
+  &:focus:after {
+    background: none;
+  }
 }
 
 h3 {
