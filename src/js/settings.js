@@ -538,9 +538,11 @@ cqHelper.settings.error = function(e) {
 
 /**
  * Import settings file
+ *
+ * @method importSettings
  */
 cqHelper.settings.importSettings = function() {
-  // the file list
+  // The file list
   var fileList = document.getElementById('environments-import').files;
 
   var fileReader = new FileReader();
@@ -551,42 +553,51 @@ cqHelper.settings.importSettings = function() {
     return function(e) {
 
       try {
-        // file's content in e.target.result
-        environments = JSON.parse(e.target.result);
+        // File's content in fileReader.result
+        environments = JSON.parse(fileReader.result);
       } catch(execption) {
         alert("There was a problem with the selected file.\n\nPlease ensure the selected file contains valid JSON.\n");
         return false;
       }
 
+      // Setup the import options object
       var importOpts = {
         oncomplete: function(e) {
           cqHelper.settings.feedback('success', 'Settings import complete');
-          window.setTimeout(function(){
-              location.reload();
-            }, 1200);
         },
         onerror: function(e) {
           alert('Error adding environment', importOpts.data.title);
         }
       };
 
-      // iterate through environments
+      var timeStamp = new Date().getTime();
+      var counter = 0;
+
+      // Iterate through environments
       for (var obj in environments) {
-        // set the timeStamp
-        environments[obj].timeStamp = new Date().getTime();
-        // use the object property as the title
+        // Randomize the timeStamp
+        // Otherwise, the `unique` requirement prevents objects from being saved
+        // But still incorporate the timeStamp so they're in the expected order (based on the JSON file)
+        environments[obj].timeStamp = timeStamp + counter;
+        // Use the object property as the title
         environments[obj].title = obj;
-        // add the environment to the import options' data object
+        // Add the environment to the import options' data object
         importOpts.data = environments[obj];
         console.log(importOpts.data);
         // Add the environment
         cqHelperDB.add(importOpts);
+        counter++;
       }
     };
   })(fileList[0]);  // fileList[0] assumes only one file has been selected
 
-  // read the file
+  // Read the file
   fileReader.readAsText(fileList[0]);
+
+  window.setTimeout(function(){
+    location.reload();
+  }, 1000);
+
 };
 
 
