@@ -69,11 +69,12 @@ h2 {
 
   &:after {
     content: '';
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     margin-left: 0.5em;
     display: inline-block;
-    background: transparent url('../images/edit.png') no-repeat;
+    background: transparent url('../images/sprite.png') no-repeat;
+    background-position: 0 -40px;
     cursor: text;
   }
 
@@ -137,13 +138,14 @@ li {
   position: absolute;
   top: 1em;
   right: 1em;
-  background: transparent url('../images/sprite-remove.png') no-repeat;
+  background: transparent url('../images/sprite.png') no-repeat;
   background-position: 0 0;
   cursor: pointer;
 
   &:hover,
   &:focus {
     background-position: 0 -20px;
+    background-color: $feedback-bad;
   }
 }
 
